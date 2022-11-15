@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\ProgramController;
+use App\Http\Controllers\Admin\SchoolController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\StudentController;
@@ -24,7 +27,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::middleware(['auth'])->group(function () {
+Route::group([ 'prefix'     => 'admin', 'middleware' => [  'auth' ]], function () {
   Route::resource('user', UserController::class);
-Route::resource('student', StudentController::class);  
+  Route::resource('student', StudentController::class);
+
+  Route::resource('schools', SchoolController::class);
+  Route::resource('programs', ProgramController::class);
+  Route::resource('courses', CourseController::class);
 });
