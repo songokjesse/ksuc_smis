@@ -38,15 +38,15 @@
 {{--                </ul>--}}
 {{--            </li>--}}
             <li>
-                <a href="#" class="nav-link px-0 align-middle">
+                <a href="/admin/schools" class="nav-link px-0 align-middle">
                     <i class="fs-4 bi-table"></i> <span class="ms-1 d-none text-white d-sm-inline">Schools</span></a>
             </li>
             <li>
-                <a href="#" class="nav-link px-0 align-middle">
+                <a href="/admin/programs" class="nav-link px-0 align-middle">
                     <i class="fs-4 bi-table"></i> <span class="ms-1 d-none text-white d-sm-inline">Programs</span></a>
             </li>
             <li>
-                <a href="#" class="nav-link px-0 align-middle">
+                <a href="/admin/courses" class="nav-link px-0 align-middle">
                     <i class="fs-4 bi-table"></i> <span class="ms-1 d-none text-white d-sm-inline">Courses</span></a>
             </li>
         </ul>

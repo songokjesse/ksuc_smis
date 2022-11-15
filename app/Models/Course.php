@@ -8,5 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'code','program_id'];
+    protected $fillable = ['name', 'course_code','program_id'];
+
+    public function program()
+    {
+        return $this->belongsTo(Program::class);
+    }
 }
