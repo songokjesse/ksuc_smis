@@ -30,17 +30,12 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group([ 'prefix'     => 'admin', 'middleware' => [  'auth' ]], function () {
-<<<<<<< HEAD
     Route::resource('user', UserController::class);
     Route::resource('student', StudentController::class);
     
-    Route::get('newstudent',
-     [App\Http\Controllers\Admin\StudentUsercontroller::class, 'newstu'])->name('newstudent');
+    Route::get('newstudent',      [App\Http\Controllers\Admin\StudentUsercontroller::class, 'newstu'])->name('newstudent');
      
-     Route::post('regnewstudent',
-     [App\Http\Controllers\Admin\StudentUsercontroller::class, 'store'])->name('regnewstudent');
-  });
-=======
+     Route::post('regnewstudent',   [App\Http\Controllers\Admin\StudentUsercontroller::class, 'store'])->name('regnewstudent');
   Route::resource('user', UserController::class);
   Route::resource('student', StudentController::class);
 
@@ -48,4 +43,3 @@ Route::group([ 'prefix'     => 'admin', 'middleware' => [  'auth' ]], function (
   Route::resource('programs', ProgramController::class);
   Route::resource('courses', CourseController::class);
 });
->>>>>>> main
