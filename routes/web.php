@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Admin\StudentUsercontroller;
 use App\Http\Controllers\Admin\UserController;
+use Illuminate\Routing\RouteGroup;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +26,13 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::middleware(['auth'])->group(function () {
-  Route::resource('user', UserController::class);
-Route::resource('student', StudentController::class);  
-});
+Route::group([ 'prefix'     => 'admin', 'middleware' => [  'auth' ]], function () {
+    Route::resource('user', UserController::class);
+    Route::resource('student', StudentController::class);
+    
+    Route::get('newstudent',
+     [App\Http\Controllers\Admin\StudentUsercontroller::class, 'newstu'])->name('newstudent');
+     
+     Route::post('regnewstudent',
+     [App\Http\Controllers\Admin\StudentUsercontroller::class, 'store'])->name('regnewstudent');
+  });
