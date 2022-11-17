@@ -10,28 +10,28 @@
                     </div>
                 @endif
 
-                    <a href="/admin/schools/create" class="btn-sm btn btn-primary">Add New School</a>
+                <a href="/admin/courses/create" class="btn-sm btn btn-primary">Add New Course</a>
 
-
-
-                    <table class="table table-striped table-bordered mt-3">
+                <table class="table table-striped table-bordered mt-3">
                     <thead>
                     <tr>
                         <th>#</th>
+                        <th>Program</th>
+                        <th>Unit Code</th>
                         <th>Name</th>
-                        <th>Created At</th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($schools as $school)
+                    @foreach($courses as $course)
                         <tr>
                             <td>{{$loop->iteration}}</td>
-                            <td>{{ $school->name }}</td>
-                            <td>{{ $school->created_at }}</td>
+                            <td>School of {{ $course->program->name }}</td>
+                            <td>{{ $course->course_code }}</td>
+                            <td>{{ $course->name }}</td>
                             <td>
-                                <form action="{{ route('schools.destroy',$school->id) }}" method="POST">
-                                    <a class="btn btn-primary btn-sm" href="{{ route('schools.edit',$school->id) }}">Edit</a>
+                                <form action="{{ route('courses.destroy',$course->id) }}" method="POST">
+                                    <a class="btn btn-primary btn-sm" href="{{ route('courses.edit',$course->id) }}">Edit</a>
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
@@ -45,3 +45,4 @@
         </div>
     </div>
 @endsection
+

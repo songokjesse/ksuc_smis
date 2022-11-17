@@ -10,28 +10,28 @@
                     </div>
                 @endif
 
-                    <a href="/admin/schools/create" class="btn-sm btn btn-primary">Add New School</a>
+                <a href="/admin/programs/create" class="btn-sm btn btn-primary">Add New Program</a>
 
-
-
-                    <table class="table table-striped table-bordered mt-3">
+                <table class="table table-striped table-bordered mt-3">
                     <thead>
                     <tr>
                         <th>#</th>
+                        <th>School</th>
                         <th>Name</th>
                         <th>Created At</th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($schools as $school)
+                    @foreach($programs as $program)
                         <tr>
                             <td>{{$loop->iteration}}</td>
-                            <td>{{ $school->name }}</td>
-                            <td>{{ $school->created_at }}</td>
+                            <td>School of {{ $program->school->name }}</td>
+                            <td>{{ $program->name }}</td>
+                            <td>{{ $program->created_at }}</td>
                             <td>
-                                <form action="{{ route('schools.destroy',$school->id) }}" method="POST">
-                                    <a class="btn btn-primary btn-sm" href="{{ route('schools.edit',$school->id) }}">Edit</a>
+                                <form action="{{ route('programs.destroy',$program->id) }}" method="POST">
+                                    <a class="btn btn-primary btn-sm" href="{{ route('programs.edit',$program->id) }}">Edit</a>
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
