@@ -24,7 +24,6 @@ return view('admin.students.landing');
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'year'=>'Required',
             'adm'=>'Required',
-            'email'=>'Required'
             ]);
 
             $searched=$request->input('email');
