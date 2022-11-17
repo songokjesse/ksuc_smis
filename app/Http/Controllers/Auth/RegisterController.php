@@ -87,7 +87,7 @@ class RegisterController extends Controller
             ]);
        }
        if($data['admission_number']){
-            student::create([
+            Student::create([
                 'admission_number' => $data['admission_number'],
                 'user_id' => $user->id,
                 'year_admitted' => $data['year_admitted']
