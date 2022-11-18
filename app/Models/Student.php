@@ -16,7 +16,7 @@ class Student extends Model
         'year_admitted',
         
     ];
-    public function User(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
