@@ -41,7 +41,7 @@ return view('admin.students.landing');
         $student->admission_number=$request->input('adm');
         $student->year_admitted=$request->input('year');
         $student->save();
-        return back()->with('status', 'Student added to the system!');
+        return redirect('/admin/student')->with('status', 'Student added to the system!');
 
     }
 }

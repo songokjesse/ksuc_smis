@@ -27,7 +27,7 @@
                     @foreach($student as $student)
                         <tr>
                             <td>{{$loop->iteration}}</td>
-                            <td>{{ $student->name }}</td>
+                            <td>{{ $student->user->first_name }}</td>
                             <td>{{ $student->created_at }}</td>
                             <td>
                                 <form action="{{ route('student.destroy',$student->id) }}" method="POST">
