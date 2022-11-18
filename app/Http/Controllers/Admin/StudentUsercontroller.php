@@ -24,7 +24,6 @@ return view('admin.students.landing');
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'year'=>'Required',
             'adm'=>'Required',
-            'email'=>'Required'
             ]);
 
             $searched=$request->input('email');
@@ -42,7 +41,7 @@ return view('admin.students.landing');
         $student->admission_number=$request->input('adm');
         $student->year_admitted=$request->input('year');
         $student->save();
-        return back()->with('status', 'Student added to the system!');
+        return redirect('/admin/student')->with('status', 'Student added to the system!');
 
     }
 }
