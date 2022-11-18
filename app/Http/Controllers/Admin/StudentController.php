@@ -53,7 +53,7 @@ class StudentController extends Controller
         $student->admission_number=$request->input('adm');
         $student->year_admitted=$request->input('year');
         $student->save();
-        return back()->with('status', 'Student added to the system!');
+        return redirect('/admin/student')->with('status', 'Student added to the system!');
 // $empty="Not found";
 // $searched=$request->input('search');
 //         $lantec=stock::where('product_name','LIKE','%'.$searched.'%')
@@ -80,7 +80,9 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student=Student::find($id)->first();
+        return view('admin.students.studentedit')
+        ->with('student',$student);
     }
 
     /**
@@ -92,7 +94,20 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'year'=>'Required',
+            'adm'=>'Required',
+            ]);
+         
+            $student=Student::where('id',$id)
+            ->update([
+
+              
+                'admission_number'=>$request->input('adm'),
+                
+                'year_admitted'=>$request->input('year'),
+            ]);
+            return redirect('/admin/student')->with('status', 'update Created Successfully!');
     }
 
     /**
@@ -103,6 +118,8 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $student=Student::find($id);
+        $student->delete();
+        return redirect('/admin/student')->with('status',__('Record deleted'));
     }
 }
